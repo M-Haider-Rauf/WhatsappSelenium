@@ -2,7 +2,12 @@ import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
+messages = [line.replace('\n', '') for line in open("messages.txt", "r")]
+for s, i in enumerate(messages):
+    print("{}: {}".format(i, s))
 
+
+'''
 def get_user(name):
     while True:
         try:
@@ -44,3 +49,4 @@ for i in range(count):
     get_message_box().send_keys(Keys.ENTER)
 
 browser.close()
+'''
