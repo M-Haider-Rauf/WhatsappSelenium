@@ -1,13 +1,8 @@
 import selenium
+import random
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-messages = [line.replace('\n', '') for line in open("messages.txt", "r")]
-for s, i in enumerate(messages):
-    print("{}: {}".format(i, s))
-
-
-'''
 def get_user(name):
     while True:
         try:
@@ -31,22 +26,21 @@ def start_whatsapp():
     browser = webdriver.Firefox()
     browser.get("https://web.whatsapp.com/")
     global messages
-    messages = [line for line in open("messages.txt", "r")]
+    messages = [line.replace('\n', '') for line in open("messages.txt", "r")]
 
 
 browser = None
 messages = None
 
 start_whatsapp()
-count = 10
+spam_count = 20
 
-for i in range(count):
-    text = messages[i % len(messages)]
-    text += " Chuttiya"
-    el = get_user('Umar Amjad')
-    el.click()
-    get_message_box().send_keys("YAIN HURT")
+ran_gen = random.Random()
+
+for i in range(spam_count):
+    text = messages[ran_gen.randint(0, len(messages) - 1)]
+    get_user('mama').click()
+    get_message_box().send_keys(text)
     get_message_box().send_keys(Keys.ENTER)
 
 browser.close()
-'''
